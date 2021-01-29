@@ -1,0 +1,5 @@
+/.idea/
+/model/target/
+
+*.class
+*.iml
