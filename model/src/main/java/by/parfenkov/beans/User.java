@@ -21,6 +21,11 @@ public class User extends AbstractEntity {
 
     public class Builder {
 
+        public Builder withId(long id) {
+            User.this.setId(id);
+            return this;
+        }
+
         public Builder withUserName(String userName) {
             User.this.setUserName(userName);
             return this;

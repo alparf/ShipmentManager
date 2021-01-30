@@ -19,6 +19,11 @@ public class Container extends AbstractEntity {
 
     public class Builder {
 
+        public Builder withId(long id) {
+            Container.this.setId(id);
+            return this;
+        }
+
         public Builder withName(String name) {
             Container.this.setName(name);
             return this;

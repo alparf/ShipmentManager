@@ -8,6 +8,7 @@
     <artifactId>shipment-manager</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>model</module>
         <module>app</module>
@@ -31,6 +32,11 @@
                 <artifactId>slf4j-api</artifactId>
                 <version>1.7.25</version>
             </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>5.4.27.Final</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -38,4 +44,5 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
+
 </project>

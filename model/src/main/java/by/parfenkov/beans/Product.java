@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class Product extends AbstractEntity {
     private String name;
     private Container container;
+    private int numberOfContainer;
     private int shippedMass;
     private int returnMass;
     private int price;
@@ -20,7 +23,20 @@ public class Product extends AbstractEntity {
         return new Product().new Builder();
     }
 
+    public int getCost() {
+        int cost = 0;
+        if (null != container) {
+            cost = price * (shippedMass - (numberOfContainer * container.getMass()));
+        }
+        return cost;
+    }
+
     public class Builder {
+
+        public Builder withId(long id) {
+            Product.this.setId(id);
+            return this;
+        }
 
         public Builder withName(String name) {
             Product.this.setName(name);
@@ -29,6 +45,11 @@ public class Product extends AbstractEntity {
 
         public Builder withContainer(Container container) {
             Product.this.setContainer(container);
+            return this;
+        }
+
+        public Builder withNumberOfContainer(int numberOfContainer) {
+            Product.this.setNumberOfContainer(numberOfContainer);
             return this;
         }
 

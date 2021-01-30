@@ -19,6 +19,11 @@ public class Employee extends AbstractEntity {
 
     public class Builder {
 
+        public Builder withId(long id) {
+            Employee.this.setId(id);
+            return this;
+        }
+
         public Builder withFio(String fio) {
             Employee.this.setFio(fio);
             return this;

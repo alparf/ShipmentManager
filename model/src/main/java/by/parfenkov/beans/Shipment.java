@@ -15,6 +15,7 @@ import java.util.List;
 public class Shipment extends AbstractEntity {
     private List<Product> products;
     private Store store;
+    private Employee seller;
     private LocalDate shippingDate;
     private User whoOpen;
     private User whoClose;
@@ -25,6 +26,11 @@ public class Shipment extends AbstractEntity {
 
     public class Builder {
 
+        public Builder withId(long id) {
+            Shipment.this.setId(id);
+            return this;
+        }
+
         public Builder withProducts(List<Product> products) {
             Shipment.this.setProducts(products);
             return this;
@@ -32,6 +38,11 @@ public class Shipment extends AbstractEntity {
 
         public Builder withStore(Store store) {
             Shipment.this.setStore(store);
+            return this;
+        }
+
+        public Builder withEmployee(Employee employee) {
+            Shipment.this.setSeller(employee);
             return this;
         }
 

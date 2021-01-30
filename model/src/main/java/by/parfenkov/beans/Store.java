@@ -20,6 +20,11 @@ public class Store extends AbstractEntity {
 
     public class Builder {
 
+        public Builder withId(long id) {
+            Store.this.setId(id);
+            return this;
+        }
+
         public Builder withName(String name) {
             Store.this.setName(name);
             return this;

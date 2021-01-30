@@ -18,6 +18,11 @@ public class Position extends AbstractEntity {
 
     public class Builder {
 
+        public Builder withId(long id) {
+            Position.this.setId(id);
+            return this;
+        }
+
         public Builder withName(String name) {
             Position.this.setName(name);
             return this;
