@@ -9,28 +9,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Employee extends AbstractEntity {
-    private String fio;
-    private Position position;
+public class Container extends AbstractEntity {
+    private String name;
+    private int mass;
 
     public static Builder newBuilder() {
-        return new Employee().new Builder();
+        return new Container().new Builder();
     }
 
     public class Builder {
 
-        public Builder withFio(String fio) {
-            Employee.this.setFio(fio);
+        public Builder withName(String name) {
+            Container.this.setName(name);
             return this;
         }
 
-        public Builder withPosition(Position position) {
-            Employee.this.setPosition(position);
+        public Builder withMass(int mass) {
+            Container.this.setMass(mass);
             return this;
         }
 
-        public Employee build() {
-            return Employee.this;
+        public Container build() {
+            return Container.this;
         }
 
         private Builder() {
