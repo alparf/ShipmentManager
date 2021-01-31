@@ -17,8 +17,21 @@ public class Shipment extends AbstractEntity {
     private Store store;
     private Employee seller;
     private LocalDate shippingDate;
+    private int proceeds;
     private User whoOpen;
     private User whoClose;
+
+    /**
+     *
+     * @return
+     */
+
+    public int getBalance() {
+        int sold = products.stream()
+                .mapToInt(product -> product.getSold())
+                .sum();
+        return proceeds - sold;
+    }
 
     public static Builder newBuilder() {
         return new Shipment().new Builder();
@@ -48,6 +61,11 @@ public class Shipment extends AbstractEntity {
 
         public Builder withShippingDate(LocalDate shippingDate) {
             Shipment.this.setShippingDate(shippingDate);
+            return this;
+        }
+
+        public Builder withProceeds(int proceeds) {
+            Shipment.this.setProceeds(proceeds);
             return this;
         }
 

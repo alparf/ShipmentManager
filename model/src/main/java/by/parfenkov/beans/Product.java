@@ -23,6 +23,24 @@ public class Product extends AbstractEntity {
         return new Product().new Builder();
     }
 
+    /**
+     *
+     * @return
+     */
+
+    public int getSold() {
+        int sold = 0;
+        if (null != container) {
+            sold = price * (shippedMass - returnMass - (numberOfContainer * container.getMass()));
+        }
+        return sold;
+    }
+
+    /**
+     *
+     * @return
+     */
+
     public int getCost() {
         int cost = 0;
         if (null != container) {
