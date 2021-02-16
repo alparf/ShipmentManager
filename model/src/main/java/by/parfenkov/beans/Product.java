@@ -5,18 +5,25 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Entity
 public class Product extends AbstractEntity {
+    @Column(name = "name")
     private String name;
     private Container container;
+    @Column(name = "number_of_container")
     private int numberOfContainer;
+    @Column(name = "shipped_mass")
     private int shippedMass;
+    @Column(name = "return_mass")
     private int returnMass;
+    @Column(name = "price")
     private int price;
 
     public static Builder newBuilder() {

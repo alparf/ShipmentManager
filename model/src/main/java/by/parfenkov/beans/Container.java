@@ -5,12 +5,18 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Entity
 public class Container extends AbstractEntity {
+    @Column(name = "name")
     private String name;
+    @Column(name = "mass")
     private int mass;
 
     public static Builder newBuilder() {

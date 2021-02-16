@@ -5,14 +5,21 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Entity
 public class User extends AbstractEntity {
+    @Column(name = "user_name")
     private String userName;
+    @Column(name = "password")
     private String password;
     private Employee employee;
+    @Column(name = "right")
     private int right;
 
     public static Builder newBuilder() {

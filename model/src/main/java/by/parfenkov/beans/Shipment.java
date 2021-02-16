@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,11 +14,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Entity
 public class Shipment extends AbstractEntity {
     private List<Product> products;
     private Store store;
     private Employee seller;
     private LocalDate shippingDate;
+    @Column(name = "proceeds")
     private int proceeds;
     private User whoOpen;
     private User whoClose;

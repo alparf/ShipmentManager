@@ -5,12 +5,17 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Entity
 public class Position extends AbstractEntity {
-    String name;
+    @Column(name = "name")
+    private String name;
 
     public static Builder newBuilder() {
         return new Position().new Builder();

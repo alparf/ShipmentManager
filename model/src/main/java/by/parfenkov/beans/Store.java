@@ -5,13 +5,20 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Entity
 public class Store extends AbstractEntity {
+    @Column(name = "name")
     private String name;
+    @Column(name = "mode")
     private String mode;
+    @Column(name = "address")
     private String address;
 
     public static Builder newBuilder() {
