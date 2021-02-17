@@ -21,8 +21,8 @@ public class User extends AbstractEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
-    @Column(name = "right", nullable = false)
-    private int right;
+    @Column(name = "rights", nullable = false)
+    private int rights;
 
     public static Builder newBuilder() {
         return new User().new Builder();
@@ -50,8 +50,8 @@ public class User extends AbstractEntity {
             return this;
         }
 
-        public Builder withRight(int right) {
-            User.this.setRight(right);
+        public Builder withRights(int rights) {
+            User.this.setRights(rights);
             return this;
         }
 

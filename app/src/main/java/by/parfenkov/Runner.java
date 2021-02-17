@@ -22,10 +22,10 @@ public class Runner {
                 .withUserName("admin")
                 .withPassword("password")
                 .withEmployee(employee)
-                .withRight(25)
+                .withRights(25)
                 .build();
+        session.persist(user);
         transaction.commit();
-        session.persist(position);
         session.close();
     }
 }
