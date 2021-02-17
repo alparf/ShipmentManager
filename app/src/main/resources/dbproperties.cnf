@@ -1,4 +1,0 @@
-class_for_name=org.postgresql.Driver
-url=jdbc:postgresql://localhost:5432/shipmentManagerDB
-user_name=smapp
-password=mtiz98na

@@ -5,17 +5,19 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Entity
+@Table(name = "products")
 public class Product extends AbstractEntity {
     @Column(name = "name")
     private String name;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "container_id", referencedColumnName = "id")
     private Container container;
     @Column(name = "number_of_container")
     private int numberOfContainer;
