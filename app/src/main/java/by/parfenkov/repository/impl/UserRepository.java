@@ -65,6 +65,7 @@ public class UserRepository implements IRepository<User> {
             IHibernateSpecification hibernateSpecification = (IHibernateSpecification) specification;
             userList = em.createQuery(hibernateSpecification.getQuery(em)).getResultList();
         }
+        userList.removeIf(specification::isInvalid);
         return userList;
     }
 }

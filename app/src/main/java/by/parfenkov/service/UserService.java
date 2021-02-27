@@ -1,8 +1,11 @@
 package by.parfenkov.service;
 
 import by.parfenkov.beans.User;
+import by.parfenkov.repository.IRepository;
 import by.parfenkov.repository.impl.UserRepository;
 import by.parfenkov.specification.impl.AllUsersSpecification;
+import by.parfenkov.specification.impl.IdSpecification;
+import by.parfenkov.specification.impl.UserNameAndPasswordSpecification;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,11 +25,15 @@ public class UserService {
     }
 
     public Optional<User> get(String userName, String password) {
-       return Optional.empty();
+        IRepository<User> repository = new UserRepository();
+        return repository.get(new UserNameAndPasswordSpecification(userName, password)).stream()
+                .findFirst();
     }
 
     public Optional<User> get(long id) {
-        return Optional.empty();
+        IRepository<User> repository = new UserRepository();
+        return repository.get(new IdSpecification(id)).stream()
+                .findFirst();
     }
 
     public List<User> getAll() {
