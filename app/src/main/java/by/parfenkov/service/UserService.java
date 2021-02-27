@@ -1,6 +1,8 @@
 package by.parfenkov.service;
 
 import by.parfenkov.beans.User;
+import by.parfenkov.repository.impl.UserRepository;
+import by.parfenkov.specification.impl.AllUsersSpecification;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,15 +10,15 @@ import java.util.Optional;
 public class UserService {
 
     public Optional<User> add(User user) {
-        return Optional.empty();
+        return new UserRepository().add(user);
     }
 
     public Optional<User> set(User user) {
-        return Optional.empty();
+        return new UserRepository().set(user);
     }
 
     public Optional<User> remove(User user) {
-        return Optional.empty();
+        return new UserRepository().remove(user);
     }
 
     public Optional<User> get(String userName, String password) {
@@ -28,7 +30,7 @@ public class UserService {
     }
 
     public List<User> getAll() {
-        return null;
+        return new UserRepository().get(new AllUsersSpecification());
     }
 
     public boolean isNameHasUsed(String userName) {

@@ -9,5 +9,5 @@ public interface IRepository<T> {
     Optional<T> add(T t);
     Optional<T> set(T t);
     Optional<T> remove(T t);
-    List<T> get(ISpecification<T> ...s);
+    List<T> get(ISpecification<T> specification);
 }

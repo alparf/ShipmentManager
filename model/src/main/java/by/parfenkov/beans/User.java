@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User extends AbstractEntity {
-    @Column(name = "user_name", nullable = false)
+    @Column(name = "user_name", nullable = false, unique = true)
     private String userName;
     @Column(name = "password", nullable = false)
     private String password;
