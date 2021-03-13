@@ -18,7 +18,7 @@ public class User extends AbstractEntity {
     private String userName;
     @Column(name = "password", nullable = false)
     private String password;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
     @Column(name = "rights", nullable = false)

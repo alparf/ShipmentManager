@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,18 +16,28 @@ import java.util.List;
 @Entity
 @Table(name = "shipments")
 public class Shipment extends AbstractEntity {
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
+    @OneToOne
+    @JoinColumn(name = "store_id", referencedColumnName = "id")
     private Store store;
+    @OneToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee seller;
+    @Column(name = "date")
     private LocalDate shippingDate;
     @Column(name = "proceeds")
     private int proceeds;
+    @OneToOne
+    @JoinColumn(name = "whoOpen_id", referencedColumnName = "id")
     private User whoOpen;
+    @OneToOne
+    @JoinColumn(name = "whoClose_id", referencedColumnName = "id")
     private User whoClose;
 
     /**
      *
-     * @return
+     * @return difference between shipped and sold products
      */
 
     public int getBalance() {
