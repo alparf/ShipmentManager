@@ -6,6 +6,18 @@ import java.util.List;
 import java.util.Optional;
 
 public class PositionService {
+    private static volatile PositionService instance;
+
+    public static PositionService getService() {
+        if (null == instance) {
+            synchronized (UserService.class) {
+                if (null == instance) {
+                    instance = new PositionService();
+                }
+            }
+        }
+        return instance;
+    }
 
     public Optional<Position> add(Position position) {
         return Optional.empty();
@@ -25,5 +37,9 @@ public class PositionService {
 
     public List<Position> getAll() {
         return null;
+    }
+
+    private PositionService() {
+
     }
 }

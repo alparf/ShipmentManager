@@ -6,6 +6,18 @@ import java.util.List;
 import java.util.Optional;
 
 public class ContainerService {
+    private static volatile ContainerService instance;
+
+    public static ContainerService getService() {
+        if (null == instance) {
+            synchronized (UserService.class) {
+                if (null == instance) {
+                    instance = new ContainerService();
+                }
+            }
+        }
+        return instance;
+    }
 
     public Optional<Container> add(Container container) {
         return Optional.empty();
@@ -25,5 +37,9 @@ public class ContainerService {
 
     public List<Optional> getAll() {
         return null;
+    }
+
+    public ContainerService() {
+
     }
 }

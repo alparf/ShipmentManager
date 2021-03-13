@@ -6,6 +6,18 @@ import java.util.List;
 import java.util.Optional;
 
 public class StoreService {
+    private static volatile StoreService instance;
+
+    public static StoreService getService() {
+        if (null == instance) {
+            synchronized (UserService.class) {
+                if (null == instance) {
+                    instance = new StoreService();
+                }
+            }
+        }
+        return instance;
+    }
 
     public Optional<Store> add(Store store) {
         return Optional.empty();
@@ -25,5 +37,9 @@ public class StoreService {
 
     public List<Store> getAll() {
         return null;
+    }
+
+    private StoreService() {
+
     }
 }

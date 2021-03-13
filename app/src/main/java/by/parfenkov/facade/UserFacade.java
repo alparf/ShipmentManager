@@ -7,16 +7,15 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserFacade {
-
     public static Optional<User> signIn(String userName, String password) {
-        return new UserService().get(userName, password);
+        return UserService.getService().get(userName, password);
     }
 
     public static Optional<User> newUser(User user) {
-        UserService userService = new UserService();
+        UserService userService = UserService.getService();
         Optional<User> optional = Optional.empty();
         synchronized (UserService.class) {
-            if (userService.isNameHasUsed(user.getUserName())) {
+            if (!userService.isNameHasUsed(user.getUserName())) {
                 optional = userService.add(user);
             }
         }
@@ -24,17 +23,17 @@ public class UserFacade {
     }
 
     public static Optional<User> updateUser(User user) {
-        return new UserService().set(user);
+        return UserService.getService().set(user);
     }
 
     public static Optional<User> removeUser(long userId) {
-        UserService userService = new UserService();
+        UserService userService = UserService.getService();
         Optional<User> user = userService.get(userId);
         user.ifPresent(userService::remove);
         return user;
     }
 
     public static List<User> getAll() {
-        return new UserService().getAll();
+        return UserService.getService().getAll();
     }
 }

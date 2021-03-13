@@ -11,36 +11,55 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserService {
+    private static volatile UserService instance;
+    private final IRepository<User> repository;
+
+    {
+        this.repository = new UserRepository();
+    }
+
+    public static UserService getService() {
+        if (null == instance) {
+            synchronized (UserService.class) {
+                if (null == instance) {
+                    instance = new UserService();
+                }
+            }
+        }
+        return instance;
+    }
 
     public Optional<User> add(User user) {
-        return new UserRepository().add(user);
+        return this.repository.add(user);
     }
 
     public Optional<User> set(User user) {
-        return new UserRepository().set(user);
+        return this.repository.set(user);
     }
 
     public Optional<User> remove(User user) {
-        return new UserRepository().remove(user);
+        return this.repository.remove(user);
     }
 
     public Optional<User> get(String userName, String password) {
-        IRepository<User> repository = new UserRepository();
-        return repository.get(new UserNameAndPasswordSpecification(userName, password)).stream()
+        return this.repository.get(new UserNameAndPasswordSpecification(userName, password)).stream()
                 .findFirst();
     }
 
     public Optional<User> get(long id) {
-        IRepository<User> repository = new UserRepository();
-        return repository.get(new IdSpecification(id)).stream()
+        return this.repository.get(new IdSpecification(id)).stream()
                 .findFirst();
     }
 
     public List<User> getAll() {
-        return new UserRepository().get(new AllUsersSpecification());
+        return this.repository.get(new AllUsersSpecification());
     }
 
     public boolean isNameHasUsed(String userName) {
         return false;
+    }
+
+    private UserService() {
+
     }
 }

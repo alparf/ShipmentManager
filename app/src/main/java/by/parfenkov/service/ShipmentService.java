@@ -6,6 +6,18 @@ import java.util.List;
 import java.util.Optional;
 
 public class ShipmentService {
+    private static volatile ShipmentService instance;
+
+    public static ShipmentService getService() {
+        if (null == instance) {
+            synchronized (UserService.class) {
+                if (null == instance) {
+                    instance = new ShipmentService();
+                }
+            }
+        }
+        return instance;
+    }
 
     public Optional<Shipment> add(Shipment shipment) {
         return Optional.empty();
@@ -33,5 +45,9 @@ public class ShipmentService {
 
     public List<Shipment> getAll() {
         return null;
+    }
+
+    private ShipmentService() {
+
     }
 }
