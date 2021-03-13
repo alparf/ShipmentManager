@@ -17,7 +17,7 @@ public class UserNameSpecification implements ISpecification<User>, IHibernateSp
     }
 
     @Override
-    public CriteriaQuery<User> getQuery(EntityManager entityManager) {
+    public CriteriaQuery<User> getCriteriaQuery(EntityManager entityManager) {
         final String USER_NAME_COLUMN = "user_name";
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);

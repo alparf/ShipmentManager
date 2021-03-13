@@ -15,7 +15,7 @@ public class UserFacade {
         UserService userService = UserService.getService();
         Optional<User> optional = Optional.empty();
         synchronized (UserService.class) {
-            if (!userService.isNameHasUsed(user.getUserName())) {
+            if (userService.isUserNameFree(user.getUserName())) {
                 optional = userService.add(user);
             }
         }

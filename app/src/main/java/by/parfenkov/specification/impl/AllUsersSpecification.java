@@ -11,7 +11,7 @@ import javax.persistence.criteria.Root;
 
 public class AllUsersSpecification implements ISpecification<User>, IHibernateSpecification {
     @Override
-    public CriteriaQuery<User> getQuery(EntityManager entityManager) {
+    public CriteriaQuery<User> getCriteriaQuery(EntityManager entityManager) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);

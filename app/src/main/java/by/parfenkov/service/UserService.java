@@ -6,6 +6,7 @@ import by.parfenkov.repository.impl.UserRepository;
 import by.parfenkov.specification.impl.AllUsersSpecification;
 import by.parfenkov.specification.impl.IdSpecification;
 import by.parfenkov.specification.impl.UserNameAndPasswordSpecification;
+import by.parfenkov.specification.impl.UserNameSpecification;
 
 import java.util.List;
 import java.util.Optional;
@@ -55,8 +56,8 @@ public class UserService {
         return this.repository.get(new AllUsersSpecification());
     }
 
-    public boolean isNameHasUsed(String userName) {
-        return false;
+    public boolean isUserNameFree(String userName) {
+        return this.repository.get(new UserNameSpecification(userName)).isEmpty();
     }
 
     private UserService() {

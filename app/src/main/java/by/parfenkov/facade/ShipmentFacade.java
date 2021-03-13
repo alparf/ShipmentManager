@@ -13,11 +13,9 @@ public class ShipmentFacade {
     }
 
     public static Optional<Shipment> removeShipment(long shipmentId) {
-        ShipmentService shipmentService = ShipmentService.getService();
-        ProductService productService = ProductService.getService();
-        Optional<Shipment> shipment = shipmentService.get(shipmentId);
-        shipment.ifPresent(sh -> sh.getProducts().stream().map(productService::remove));
-        shipment.ifPresent(shipmentService::remove);
+        Optional<Shipment> shipment = ShipmentService.getService().get(shipmentId);
+        shipment.ifPresent(sh -> sh.getProducts().stream().map(ProductService.getService()::remove));
+        shipment.ifPresent(ShipmentService.getService()::remove);
         return shipment;
     }
 

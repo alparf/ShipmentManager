@@ -63,7 +63,7 @@ public class UserRepository implements IRepository<User> {
         List<User> userList = new LinkedList<>();
         if (specification instanceof IHibernateSpecification) {
             IHibernateSpecification hibernateSpecification = (IHibernateSpecification) specification;
-            userList = em.createQuery(hibernateSpecification.getQuery(em)).getResultList();
+            userList = em.createQuery(hibernateSpecification.getCriteriaQuery(em)).getResultList();
         }
         userList.removeIf(specification::isInvalid);
         return userList;

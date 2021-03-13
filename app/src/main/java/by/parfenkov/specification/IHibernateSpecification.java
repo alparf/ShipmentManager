@@ -6,5 +6,5 @@ import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
 public interface IHibernateSpecification {
-    CriteriaQuery<User> getQuery(EntityManager entityManager);
+    CriteriaQuery<User> getCriteriaQuery(EntityManager entityManager);
 }
