@@ -10,7 +10,7 @@ public class ProductService {
 
     public static ProductService getService() {
         if (null == instance) {
-            synchronized (UserService.class) {
+            synchronized (ProductService.class) {
                 if (null == instance) {
                     instance = new ProductService();
                 }

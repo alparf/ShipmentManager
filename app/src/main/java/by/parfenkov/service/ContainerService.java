@@ -10,7 +10,7 @@ public class ContainerService {
 
     public static ContainerService getService() {
         if (null == instance) {
-            synchronized (UserService.class) {
+            synchronized (ContainerService.class) {
                 if (null == instance) {
                     instance = new ContainerService();
                 }

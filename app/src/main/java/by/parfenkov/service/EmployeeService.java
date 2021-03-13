@@ -10,7 +10,7 @@ public class EmployeeService {
 
     public static EmployeeService getService() {
         if (null == instance) {
-            synchronized (UserService.class) {
+            synchronized (EmployeeService.class) {
                 if (null == instance) {
                     instance = new EmployeeService();
                 }

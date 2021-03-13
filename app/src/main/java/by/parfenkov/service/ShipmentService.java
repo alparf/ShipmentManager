@@ -10,7 +10,7 @@ public class ShipmentService {
 
     public static ShipmentService getService() {
         if (null == instance) {
-            synchronized (UserService.class) {
+            synchronized (ShipmentService.class) {
                 if (null == instance) {
                     instance = new ShipmentService();
                 }

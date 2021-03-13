@@ -10,7 +10,7 @@ public class PositionService {
 
     public static PositionService getService() {
         if (null == instance) {
-            synchronized (UserService.class) {
+            synchronized (PositionService.class) {
                 if (null == instance) {
                     instance = new PositionService();
                 }
