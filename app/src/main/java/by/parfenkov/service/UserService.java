@@ -3,10 +3,10 @@ package by.parfenkov.service;
 import by.parfenkov.beans.User;
 import by.parfenkov.repository.IRepository;
 import by.parfenkov.repository.impl.UserRepository;
-import by.parfenkov.specification.impl.AllUsersSpecification;
-import by.parfenkov.specification.impl.IdSpecification;
-import by.parfenkov.specification.impl.UserNameAndPasswordSpecification;
-import by.parfenkov.specification.impl.UserNameSpecification;
+import by.parfenkov.specification.impl.user.AllUsersSpecification;
+import by.parfenkov.specification.impl.user.UserIdSpecification;
+import by.parfenkov.specification.impl.user.UserNameAndPasswordSpecification;
+import by.parfenkov.specification.impl.user.UserNameSpecification;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,12 +48,12 @@ public class UserService {
     }
 
     public Optional<User> get(long id) {
-        return this.repository.get(new IdSpecification(id)).stream()
+        return this.repository.get(new UserIdSpecification(id)).stream()
                 .findFirst();
     }
 
     public List<User> getAll() {
-        return this.repository.get(new AllUsersSpecification());
+        return this.repository.get(AllUsersSpecification.getSpecification());
     }
 
     public boolean isUserNameFree(String userName) {

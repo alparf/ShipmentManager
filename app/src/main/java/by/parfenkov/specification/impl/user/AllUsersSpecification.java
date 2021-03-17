@@ -1,4 +1,4 @@
-package by.parfenkov.specification.impl;
+package by.parfenkov.specification.impl.user;
 
 import by.parfenkov.beans.User;
 import by.parfenkov.specification.IHibernateSpecification;
@@ -9,7 +9,11 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-public class AllUsersSpecification implements ISpecification<User>, IHibernateSpecification {
+public final class AllUsersSpecification implements ISpecification<User>, IHibernateSpecification<User> {
+    public static AllUsersSpecification getSpecification() {
+        return new AllUsersSpecification();
+    }
+
     @Override
     public CriteriaQuery<User> getCriteriaQuery(EntityManager entityManager) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -21,5 +25,9 @@ public class AllUsersSpecification implements ISpecification<User>, IHibernateSp
     @Override
     public boolean isInvalid(User user) {
         return false;
+    }
+
+    private AllUsersSpecification() {
+
     }
 }

@@ -1,5 +1,6 @@
 package by.parfenkov.facade;
 
+import by.parfenkov.beans.Product;
 import by.parfenkov.beans.Shipment;
 import by.parfenkov.service.ProductService;
 import by.parfenkov.service.ShipmentService;
@@ -21,5 +22,9 @@ public class ShipmentFacade {
 
     public static Optional<Shipment> updateShipment(Shipment shipment) {
         return ShipmentService.getService().set(shipment);
+    }
+
+    public static Optional<Product> addProduct(Product product) {
+
     }
 }

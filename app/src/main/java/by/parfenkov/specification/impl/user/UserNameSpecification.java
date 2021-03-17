@@ -1,4 +1,4 @@
-package by.parfenkov.specification.impl;
+package by.parfenkov.specification.impl.user;
 
 import by.parfenkov.beans.User;
 import by.parfenkov.specification.IHibernateSpecification;
@@ -9,7 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-public class UserNameSpecification implements ISpecification<User>, IHibernateSpecification {
+public class UserNameSpecification implements ISpecification<User>, IHibernateSpecification<User> {
     private final String USER_NAME;
 
     public UserNameSpecification(String USER_NAME) {
@@ -22,7 +22,8 @@ public class UserNameSpecification implements ISpecification<User>, IHibernateSp
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
-        return criteriaQuery.select(root).where(criteriaBuilder.equal(root.get(USER_NAME_COLUMN), this.USER_NAME));
+        return criteriaQuery.select(root)
+                .where(criteriaBuilder.equal(root.get(USER_NAME_COLUMN), this.USER_NAME));
     }
 
     @Override
