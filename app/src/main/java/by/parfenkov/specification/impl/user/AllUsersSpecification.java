@@ -9,10 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-public final class AllUsersSpecification implements ISpecification<User>, IHibernateSpecification<User> {
-    public static AllUsersSpecification getSpecification() {
-        return new AllUsersSpecification();
-    }
+public class AllUsersSpecification implements ISpecification<User>, IHibernateSpecification<User> {
 
     @Override
     public CriteriaQuery<User> getCriteriaQuery(EntityManager entityManager) {
@@ -25,9 +22,5 @@ public final class AllUsersSpecification implements ISpecification<User>, IHiber
     @Override
     public boolean isInvalid(User user) {
         return false;
-    }
-
-    private AllUsersSpecification() {
-
     }
 }
