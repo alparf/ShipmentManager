@@ -53,7 +53,7 @@ public class UserService {
     }
 
     public List<User> getAll() {
-        return this.repository.get(AllUsersSpecification.getSpecification());
+        return this.repository.get(new AllUsersSpecification());
     }
 
     public boolean isUserNameFree(String userName) {
